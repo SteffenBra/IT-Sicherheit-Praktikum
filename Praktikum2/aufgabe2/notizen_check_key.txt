@@ -1,0 +1,60 @@
+int sym.check_key (int esi, int edx) {
+    loc_0x4005bd:
+        // CALL XREF from main @ 0x400693
+        push  (rbp)
+        rbp = rsp
+        rsp -= 0x20
+        qword [str] = rdi // arg1
+        rax = qword [str]
+        rdi = rax     // const char *str
+        eax = 0
+        sym.imp.atoi  ()
+        // int atoi(-1)
+        dword [var_4h] = eax
+        var = dword [var_4h] - 0
+        if  (var) goto loc_0x4005ea // unlikely
+            
+    loc_0x4005ea:
+        // CODE XREF from sym.check_key @ 0x4005e1
+        edx = dword [var_4h]
+        eax = edx
+        eax += eax
+        eax += edx
+        dword [var_4h] = eax                                    x += x + x
+        eax = dword [var_4h]
+        edx = eax
+        edx >>>= 0x1f
+        eax += edx                      
+        eax >>= 1                                               
+        dword [var_4h] = eax
+        dword [var_4h] >>= 3                                    x >>= 3
+        dword [var_4h] += 0x7e25 // [0x7e25:4]=-1               x += 32293
+        dword [var_4h] -= 0x315 // [0x315:4]=-1 // 789          x -= 789
+        ecx = dword [var_4h]
+        edx = 0x5f64fbe7
+        eax = ecx
+        eax = eax * edx
+        edx >>= 8
+        eax = ecx
+        eax >>= 0x1f
+        edx -= eax
+        eax = edx
+        eax = eax * 0x2af                                       x = x % 687
+        ecx -= eax
+        eax = ecx
+        dword [var_4h] = eax
+        var = dword [var_4h] - 0x17
+        if  (var) goto loc_0x400649 // likely
+            
+    loc_0x400649:
+        // CODE XREF from sym.check_key @ 0x400640
+        eax = 1
+         // do {
+    loc_0x40064e:
+        // CODE XREFS from sym.check_key @ 0x4005e8, 0x400647
+        leav          // rsp
+        re
+         // } while (?);
+         // } while (?);
+         // } while (?);
+        }

@@ -1,0 +1,59 @@
+nt sym.test2 (int esi, int edx) {
+    loc_0x119e:
+        push  (rbp)
+        rbp = rsp
+        dword [var_4h] = edi // arg1
+        edx = dword [var_4h]
+        eax = edx
+        eax += eax
+        eax += edx
+        dword [var_4h] = eax
+        eax = dword [var_4h]
+        edx = rax + 0x1f
+        var = eax & eax
+        cmovs eax,dx
+        eax >>= 5
+        dword [var_4h] = eax
+        dword [var_4h] >>= 3
+        dword [var_4h] += 0x1bc // [0x1bc:4]=0
+        dword [var_4h] -= 0xde // [0xde:4]=0x10000000
+        eax = dword [var_4h]
+        rdx = eax
+        rdx = rdx * 0xffffffffa7e12da9
+        rdx >>>= 0x20
+        edx += eax
+        ecx = edx
+        ecx >>= 0xb
+        cd
+        ecx -= edx
+        edx = ecx * 0xc33
+        eax -= edx
+        dword [var_4h] = eax
+        var = dword [var_4h] - 0x18
+        if  (var) goto loc_0x1207 // likely
+            
+    loc_0x1207:
+        // CODE XREF from sym.test2 @ 0x11fe
+        eax = 0
+         // do {
+    loc_0x120c:
+        // CODE XREF from sym.test2 @ 0x1205
+        rbp = pop  ()
+        re
+         // } while (?);
+         // } while (?);
+        }
+        return eax;
+}
+
+
+
+
+(x + 32293 - 789) % 687 == 23
+
+1*(687+23) = (x + 32293 - 789)
+
+k*687+23 = x + 31504
+x = (k*687+23) - 31504
+
+x= 37219
