@@ -1,0 +1,38 @@
+Aufgabe 1:
+a)
+
+./white_rabbit_stripped
+
+r2 white_rabbit_stripped
+aaa
+iz
+
+Password: 2836824467189465928
+
+./white_rabbit_stripped -C magenta
+
+strings white_rabbit_stripped
+
+
+b)
+r2 -w white_rabbit_stripped
+
+aaa
+
+pdf @ main
+
+pdf @ fcn.00402a50
+
+s fcn.00402a50
+
+Vp
+
+oberste zeile auf Position stellen: 0x00402a96
+
+Shift a 
+xor eax, eax
+enter 
+Y
+q
+quit
+./white_rabbit_stripped
