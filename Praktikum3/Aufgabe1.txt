@@ -1,0 +1,30 @@
+    # echo 0 > /proc/sys/kernel/randomize_va_space
+    gcc -frandom-seed=string echo_server.c -o echo_server -O0 -fno-stack-protector
+    execstack -s echo_server
+
+    randomize_va_space: 
+     -> schaltet address space layout randomization (ASLR) aus, der virtulle Adressraum immer an der gleichen Stelle anfängt und Adressen deterministisch sind
+     -> Exploit lässt sich wiederverwenden da Speicheradresse für Pointer gleich bleiben
+    
+    -frandom-seed=string:
+     -> This option provides a seed that GCC uses in place of random numbers in generating certain symbol names that have to be different in every compiled file. It is also used to place unique stamps in coverage data files and the object files that produce them. You can use the -frandom-seed option to produce reproducibly identical object files.
+        The string can either be a number (decimal, octal or hex) or an arbitrary string (in which case it’s converted to a number by computing CRC32).
+     -> Exploit lässt sich über Kompilate hinweg nutzen, da Bezeichner bei neukompilieren bestehen bleiben 
+
+    -o echo_server:
+     -> Place the primary output in file file. This applies to whatever sort of output is being produced, whether it be an executable file, an object file, an assembler file or preprocessed C code. 
+
+    -O0:
+     -> Reduce compilation time and make debugging produce the expected results. This is the default. 
+        Most optimizations are completely disabled at -O0 or if an -O level is not set on the command line, even if individual optimization flags are specified.
+     -> Einfacheres Finden von Schwachstellen, da keine kompilerspezifischen Optimierungen vorgenommen werden
+
+    -fno-stack-protector:
+     -> schaltet stack-protaction aus:
+        -> Emit extra code to check for buffer overflows, such as stack smashing attacks. This is done by adding a guard variable to functions with vulnerable objects. This includes functions that call alloca, and functions with buffers larger than or equal to 8 bytes. The guards are initialized when a function is entered and then checked when the function exits. If a guard check fails, an error message is printed and the program exits. Only variables that are actually allocated on the stack are considered, optimized away variables or variables allocated in registers don’t count.
+     -> keine stack-Protection -> RIP können bei Buffer Overflow überschrieben werden
+
+    execstack -s echo_server:
+     -> Mark binary or shared library as requiring executable stack. 
+     -> Exploit kann Programmcode auf dem Stack ausführen, der durch einen Buffer Overflwo eingespielt wurde
+     
